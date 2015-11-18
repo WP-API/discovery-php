@@ -28,7 +28,7 @@ if ( $requested === '/style.css' ) {
 }
 
 if ( empty( $_GET['uri'] ) ) {
-	$output_page( $load_template( 'form' ) );
+	$output_page( '' );
 	return;
 }
 
