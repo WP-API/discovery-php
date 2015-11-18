@@ -1,5 +1,6 @@
 {
 	"name": "wp-api/discovery",
+	"license": "MIT",
 	"require": {
 		"rmccue/requests": "^1.6"
 	},
