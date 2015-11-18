@@ -1,0 +1,91 @@
+@import url(https://fonts.googleapis.com/css?family=Quattrocento:400,700|Fanwood+Text|Fira+Mono);
+
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+
+	color: #111;
+
+	font-size: 20px;
+	line-height: 1.8;
+	font-family: 'Fanwood Text', Times, Georgia, serif;
+	font-variant-ligatures: common-ligatures;
+	font-feature-settings: "liga", "clig";
+	-moz-font-feature-settings: "liga", "clig";
+	-ms-font-feature-settings: "liga", "clig";
+	-webkit-font-feature-settings: "liga", "clig";
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	min-width:320px;
+}
+
+.container {
+	max-width: 600px;
+	padding: 1em 0 2.33em;
+	margin: 0 auto;
+	position: relative;
+	overflow: visible;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Quattrocento', Times, Georgia, serif;
+	font-weight: 400;
+	margin: 0.1em 0 0.2em;
+}
+
+h2 {
+	font-size: 22px;
+	margin-bottom: 1.15em;
+}
+
+h3 {
+	border-bottom: 1px solid #ddd;
+	margin-top: 2em;
+}
+
+ul, pre, p, blockquote {
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+ul, li {
+	// margin:0;
+	// padding:0;
+}
+
+code, pre {
+	font-family: 'Fira Mono', monospace;
+	font-size: 0.9em;
+}
+
+a {
+	/* http://clrs.cc/ - blue */
+	color: #0074D9;
+	text-decoration: none;
+}
+
+.uri-input {
+	display: block;
+	width: 100%;
+
+	font-size: inherit;
+	font-family: 'Fira Mono', monospace;
+	padding: 0.2em 0.5em;
+}
+
+.check-legacy {
+	font-size: 0.9rem;
+}
+
+.warn {
+	/* http://clrs.cc/ - red */
+	background: rgba( 255, 65, 54, 0.4 );
+	padding: 1em;
+}
