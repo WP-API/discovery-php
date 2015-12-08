@@ -96,11 +96,11 @@ class Site {
 	 * @return array Map of authentication method => method-specific data.
 	 */
 	public function getSupportedAuthentication() {
-		if ( empty( $this->data->authentication ) || ! is_array( $this->data->authentication ) ) {
+		if ( empty( $this->data->authentication ) || empty( $this->data->authentication ) ) {
 			return array();
 		}
 
-		return $this->data->authentication;
+		return (array) $this->data->authentication;
 	}
 
 	/**
