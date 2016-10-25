@@ -59,6 +59,15 @@ class Site {
 	}
 
 	/**
+	 * Get the home (URL) for a site.
+	 *
+	 * @return string
+	 */
+	public function getHome() {
+		return $this->data->home;
+	}
+
+	/**
 	 * Get the index URL for the API.
 	 *
 	 * @return string
