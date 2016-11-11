@@ -47,6 +47,7 @@ function discover_api_root( $uri, $legacy = false ) {
 		}
 		switch ( $attrs['rel'] ) {
 			case 'https://api.w.org/':
+			case 'shortlink':
 				break;
 
 			case 'https://github.com/WP-API/WP-API':
