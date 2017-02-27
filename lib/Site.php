@@ -60,11 +60,12 @@ class Site {
 
 	/**
 	 * Get the home (URL) for a site.
+	 * If none, return false.
 	 *
-	 * @return string
+	 * @return string|bool
 	 */
 	public function getHome() {
-		return $this->data->home;
+		return isset($this->data->home) ? $this->data->home : false;
 	}
 
 	/**
