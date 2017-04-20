@@ -102,8 +102,13 @@ function parse_link_header( $link ) {
 function get_index_information( $url ) {
 	$response = Requests::get( $url );
 	$response->throw_for_status();
+	$body = $response->body;
 
-	$index = json_decode( $response->body );
+	if (0 === strpos(bin2hex($body), 'efbbbf')) {
+	   $body = substr($body, 3);
+	}
+
+	$index = json_decode( $body );
 	if ( empty( $index ) && json_last_error() !== JSON_ERROR_NONE ) {
 		throw new Exception( json_last_error_msg(), json_last_error() );
 	}
