@@ -18,6 +18,14 @@ function discover( $uri, $legacy = false ) {
 	if ( empty( $root ) ) {
 		return null;
 	}
+	
+	// Step 1.5: If root matches URI, return default with wp-json.
+	$root = rtrim($root,"/");
+	$uri = rtrim($uri,"/");
+	
+	if ($root == $uri) {
+		$root .= '/wp-json';
+	}
 
 	// Step 2: Ask the API for information.
 	return get_index_information( $root );
