@@ -44,7 +44,8 @@ function discover_api_root( $uri, $legacy = false ) {
 	$response = Requests::head( $uri );
 	$response->throw_for_status();
 
-	$links = $response->headers->getValues( 'Link' );
+	$header_value = $response->headers->getValues( 'Link' );
+	$links = explode( ',', $header_value[0] );
 
 	// Find the correct link by relation
 	foreach ( $links as $link ) {
