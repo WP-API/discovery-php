@@ -18,6 +18,14 @@ function discover( $uri, $legacy = false ) {
 	if ( empty( $root ) ) {
 		return null;
 	}
+	
+	// Step 1.5: If root matches URI, return default with wp-json.
+	$root = rtrim($root,"/");
+	$uri = rtrim($uri,"/");
+	
+	if ($root == $uri) {
+		$root .= '/wp-json';
+	}
 
 	// Step 2: Ask the API for information.
 	return get_index_information( $root );
@@ -36,7 +44,8 @@ function discover_api_root( $uri, $legacy = false ) {
 	$response = Requests::head( $uri );
 	$response->throw_for_status();
 
-	$links = $response->headers->getValues( 'Link' );
+	$header_value = $response->headers->getValues( 'Link' );
+	$links = explode( ',', $header_value[0] );
 
 	// Find the correct link by relation
 	foreach ( $links as $link ) {
@@ -47,6 +56,7 @@ function discover_api_root( $uri, $legacy = false ) {
 		}
 		switch ( $attrs['rel'] ) {
 			case 'https://api.w.org/':
+			case 'shortlink':
 				break;
 
 			case 'https://github.com/WP-API/WP-API':
@@ -101,8 +111,13 @@ function parse_link_header( $link ) {
 function get_index_information( $url ) {
 	$response = Requests::get( $url );
 	$response->throw_for_status();
+	$body = $response->body;
 
-	$index = json_decode( $response->body );
+	if (0 === strpos(bin2hex($body), 'efbbbf')) {
+	   $body = substr($body, 3);
+	}
+
+	$index = json_decode( $body );
 	if ( empty( $index ) && json_last_error() !== JSON_ERROR_NONE ) {
 		throw new Exception( json_last_error_msg(), json_last_error() );
 	}

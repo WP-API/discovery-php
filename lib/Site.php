@@ -59,6 +59,16 @@ class Site {
 	}
 
 	/**
+	 * Get the home (URL) for a site.
+	 * If none, return false.
+	 *
+	 * @return string|bool
+	 */
+	public function getHome() {
+		return isset($this->data->home) ? $this->data->home : false;
+	}
+
+	/**
 	 * Get the index URL for the API.
 	 *
 	 * @return string
